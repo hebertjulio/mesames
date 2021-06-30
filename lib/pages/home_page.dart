@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mesames/components/chart_by_category.dart';
 import 'package:mesames/components/overview.dart';
 
 class HomePage extends StatelessWidget {
@@ -22,16 +21,16 @@ class HomePage extends StatelessWidget {
             children: [
               Padding(
                 padding: const EdgeInsets.only(bottom: 16.0),
-                child: Overview(),
+                child: Overview(
+                  income: OverviewData('R\$ 2000,00', '+5%'),
+                  expense: OverviewData('R\$ 1500,00', '+5%'),
+                  save: OverviewData('R\$ 500,00', '30% da Receita'),
+                  budget: OverviewData('R\$ 3000,00', '70% da Receita'),
+                ),
               ),
-              ChartByCategory(),
             ],
           ),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: () {},
       ),
     );
   }

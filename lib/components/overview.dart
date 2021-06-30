@@ -1,49 +1,52 @@
 import 'package:flutter/material.dart';
 
 class Overview extends StatelessWidget {
+  final OverviewData income;
+  final OverviewData expense;
+  final OverviewData save;
+  final OverviewData budget;
+
+  Overview({this.income, this.expense, this.save, this.budget});
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Padding(
-          padding: const EdgeInsets.only(bottom: 8.0),
-          child: Text(
-            'Overview',
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            OverviewItem(
-              'Budget',
-              'R\$ 2.000,00',
-              'Left R\$ 500,00',
-              Colors.orange,
-              () {},
-              Icons.edit,
-            ),
-            SizedBox(width: 4),
-            OverviewItem(
-              'Income',
-              'R\$ 2.000,00',
-              'Left R\$ 500,00',
-              Colors.green,
-              () {},
-              Icons.list,
-            ),
-            SizedBox(width: 4),
-            OverviewItem(
-              'Expenses',
-              'R\$ 1.500,00',
-              'Up +5%',
-              Colors.red,
-              () {},
-              Icons.list,
-            ),
+            _OverviewItem(
+                title: 'INCOME',
+                data: this.income,
+                color: Colors.blue,
+                icon: Icons.account_balance_wallet,
+                onTap: () {}),
+            SizedBox(width: 8),
+            _OverviewItem(
+                title: 'EXPENSE',
+                data: this.expense,
+                color: Colors.red,
+                icon: Icons.shopping_cart,
+                onTap: () {}),
+          ],
+        ),
+        SizedBox(height: 8),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            _OverviewItem(
+                title: 'SAVE',
+                data: this.save,
+                color: Colors.green,
+                icon: Icons.savings,
+                onTap: () {}),
+            SizedBox(width: 8),
+            _OverviewItem(
+                title: 'BUDGET',
+                data: this.budget,
+                color: Colors.orange,
+                icon: Icons.calculate,
+                onTap: () {}),
           ],
         ),
       ],
@@ -51,31 +54,23 @@ class Overview extends StatelessWidget {
   }
 }
 
-class OverviewItem extends StatelessWidget {
-  final String _title;
-  final String _text;
-  final String _subtext;
-  final Color _color;
-  final Function _onTap;
-  final IconData _icon;
+class _OverviewItem extends StatelessWidget {
+  final String title;
+  final OverviewData data;
+  final Color color;
+  final IconData icon;
+  final Function onTap;
 
-  OverviewItem(
-    this._title,
-    this._text,
-    this._subtext,
-    this._color,
-    this._onTap,
-    this._icon,
-  );
+  _OverviewItem({this.title, this.data, this.color, this.onTap, this.icon});
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: InkWell(
-        onTap: this._onTap,
+        onTap: this.onTap,
         child: Container(
           decoration: BoxDecoration(
-            color: this._color,
+            color: Colors.white,
             borderRadius: BorderRadius.circular(4),
             boxShadow: [
               BoxShadow(
@@ -98,19 +93,19 @@ class OverviewItem extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        this._title,
+                        this.title,
                         style: TextStyle(
-                          color: Colors.white,
+                          color: this.color,
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
                         ),
                       ),
                       Visibility(
-                        visible: this._onTap != null,
+                        visible: this.onTap != null,
                         child: Icon(
-                          this._icon,
+                          this.icon,
                           size: 16,
-                          color: Colors.white,
+                          color: this.color,
                         ),
                       ),
                     ],
@@ -119,18 +114,18 @@ class OverviewItem extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(bottom: 4.0),
                   child: Text(
-                    this._text,
+                    this.data.value,
                     style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 15,
+                      color: this.color,
+                      fontSize: 16,
                     ),
                   ),
                 ),
                 Text(
-                  this._subtext,
+                  this.data.info,
                   style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 13,
+                    color: this.color,
+                    fontSize: 14,
                   ),
                 ),
               ],
@@ -140,4 +135,11 @@ class OverviewItem extends StatelessWidget {
       ),
     );
   }
+}
+
+class OverviewData {
+  final String value;
+  final String info;
+
+  OverviewData(this.value, this.info);
 }
