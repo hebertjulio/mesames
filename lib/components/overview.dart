@@ -100,13 +100,10 @@ class _OverviewItem extends StatelessWidget {
                           fontSize: 16,
                         ),
                       ),
-                      Visibility(
-                        visible: this.onTap != null,
-                        child: Icon(
-                          this.icon,
-                          size: 16,
-                          color: this.color,
-                        ),
+                      Icon(
+                        this.icon,
+                        size: 18,
+                        color: this.color,
                       ),
                     ],
                   ),
