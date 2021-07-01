@@ -21,21 +21,24 @@ class ChartByCategory extends StatelessWidget {
           scrollDirection: Axis.vertical,
           shrinkWrap: true,
           children: [
-            CategoryBarChart('Moradia', 40, 1500),
-            SizedBox(height: 8),
-            CategoryBarChart('Transporte', 15, 500),
-            SizedBox(height: 8),
-            CategoryBarChart('Hobbies', 4, 100),
-            SizedBox(height: 8),
-            CategoryBarChart('Educação', 35, 1300),
-            SizedBox(height: 8),
-            CategoryBarChart('Saúde', 17, 900),
-            SizedBox(height: 8),
-            CategoryBarChart('Viagem', 26, 1900),
-            SizedBox(height: 8),
-            CategoryBarChart('Livros', 17, 900),
-            SizedBox(height: 8),
-            CategoryBarChart('Mercado', 57, 5900),
+            _ChartByCategoryItem(
+                ChartByCategoryData('Moradia', 'R\$', 35, 1500, 400, 20)),
+            _ChartByCategoryItem(
+                ChartByCategoryData('Moradia', 'R\$', 35, 1500, 400, 20)),
+            _ChartByCategoryItem(
+                ChartByCategoryData('Moradia', 'R\$', 35, 1500, 400, 20)),
+            _ChartByCategoryItem(
+                ChartByCategoryData('Moradia', 'R\$', 35, 1500, 400, 20)),
+            _ChartByCategoryItem(
+                ChartByCategoryData('Moradia', 'R\$', 35, 1500, 400, 20)),
+            _ChartByCategoryItem(
+                ChartByCategoryData('Moradia', 'R\$', 35, 1500, 400, 20)),
+            _ChartByCategoryItem(
+                ChartByCategoryData('Moradia', 'R\$', 35, 1500, 400, 20)),
+            _ChartByCategoryItem(
+                ChartByCategoryData('Moradia', 'R\$', 35, 1500, 400, 20)),
+            _ChartByCategoryItem(
+                ChartByCategoryData('Moradia', 'R\$', 35, 1500, 400, 20)),
           ],
         ),
       ],
@@ -43,91 +46,100 @@ class ChartByCategory extends StatelessWidget {
   }
 }
 
-class CategoryBarChart extends StatelessWidget {
-  final String _category;
-  final double _percentage;
-  final double _value;
+class _ChartByCategoryItem extends StatelessWidget {
+  final ChartByCategoryData _data;
 
-  CategoryBarChart(
-    this._category,
-    this._percentage,
-    this._value,
+  _ChartByCategoryItem(
+    this._data,
   );
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Stack(
-        children: [
-          Positioned(
-            left: 8,
-            top: 16,
-            child: Icon(
-              Icons.tag,
-              size: 32,
-              color: Colors.grey.withOpacity(0.5),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.only(
-              left: 48,
-              top: 8.0,
-              right: 8.0,
-              bottom: 8.0,
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        _category,
-                        style: TextStyle(
-                          fontSize: 16,
-                        ),
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 8.0),
+      child: Container(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(bottom: 8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      this._data.categoryName,
+                      style: TextStyle(
+                        fontSize: 16,
                       ),
-                      Text(
-                        'R\$ ${this._value}',
-                        style: TextStyle(
-                          fontSize: 16,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                LinearPercentIndicator(
-                  percent: _percentage / 100,
-                  lineHeight: 14,
-                  progressColor: Colors.red,
-                  backgroundColor: Colors.red.withOpacity(0.4),
-                  center: Text(
-                    '${this._percentage}%',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 12,
                     ),
+                    Text(
+                      '${this._data.currency} ${this._data.totalValue}',
+                      style: TextStyle(
+                        fontSize: 16,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              LinearPercentIndicator(
+                padding: const EdgeInsets.only(left: 4.0, right: 4.0),
+                percent: this._data.totalPercentage / 100,
+                lineHeight: 16,
+                progressColor: Colors.red,
+                backgroundColor: Colors.orange.withOpacity(0.5),
+                center: Text(
+                  '${this._data.totalPercentage}%',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 12,
                   ),
                 ),
-              ],
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 8.0),
+                child: Text(
+                  'Budget: ${this._data.currency} ${this._data.budgetValue} (${this._data.budgetpercentage}% of Income)',
+                  style: TextStyle(
+                    fontSize: 14,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(8.0),
+          boxShadow: [
+            BoxShadow(
+              blurRadius: 1,
+              color: Colors.black.withOpacity(0.2),
+              spreadRadius: 1,
+              offset: Offset(0, 1),
             ),
-          ),
-        ],
-      ),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(8.0),
-        boxShadow: [
-          BoxShadow(
-            blurRadius: 1,
-            color: Colors.black.withOpacity(0.2),
-            spreadRadius: 1,
-            offset: Offset(0, 1),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
+}
+
+class ChartByCategoryData {
+  final String categoryName;
+  final String currency;
+  final double totalPercentage;
+  final double totalValue;
+  final double budgetValue;
+  final double budgetpercentage;
+
+  ChartByCategoryData(
+    this.categoryName,
+    this.currency,
+    this.totalPercentage,
+    this.totalValue,
+    this.budgetValue,
+    this.budgetpercentage,
+  );
 }
