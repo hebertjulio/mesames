@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 class ChartByCategory extends StatelessWidget {
+  final List<ChartByCategoryData> _data;
+
+  ChartByCategory(this._data) : assert(_data != null);
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -20,26 +24,8 @@ class ChartByCategory extends StatelessWidget {
           physics: NeverScrollableScrollPhysics(),
           scrollDirection: Axis.vertical,
           shrinkWrap: true,
-          children: [
-            _ChartByCategoryItem(
-                ChartByCategoryData('Moradia', 'R\$', 35, 1500, 400, 20)),
-            _ChartByCategoryItem(
-                ChartByCategoryData('Moradia', 'R\$', 35, 1500, 400, 20)),
-            _ChartByCategoryItem(
-                ChartByCategoryData('Moradia', 'R\$', 35, 1500, 400, 20)),
-            _ChartByCategoryItem(
-                ChartByCategoryData('Moradia', 'R\$', 35, 1500, 400, 20)),
-            _ChartByCategoryItem(
-                ChartByCategoryData('Moradia', 'R\$', 35, 1500, 400, 20)),
-            _ChartByCategoryItem(
-                ChartByCategoryData('Moradia', 'R\$', 35, 1500, 400, 20)),
-            _ChartByCategoryItem(
-                ChartByCategoryData('Moradia', 'R\$', 35, 1500, 400, 20)),
-            _ChartByCategoryItem(
-                ChartByCategoryData('Moradia', 'R\$', 35, 1500, 400, 20)),
-            _ChartByCategoryItem(
-                ChartByCategoryData('Moradia', 'R\$', 35, 1500, 400, 20)),
-          ],
+          children:
+              this._data.map((data) => _ChartByCategoryItem(data)).toList(),
         ),
       ],
     );
@@ -137,8 +123,8 @@ class ChartByCategoryData {
   ChartByCategoryData(
     this.categoryName,
     this.currency,
-    this.totalPercentage,
     this.totalValue,
+    this.totalPercentage,
     this.budgetValue,
     this.budgetpercentage,
   );
