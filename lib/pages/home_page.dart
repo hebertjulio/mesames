@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mesames/components/chart_by_category.dart';
 import 'package:mesames/components/overview.dart';
 
 class HomePage extends StatelessWidget {
@@ -28,6 +29,7 @@ class HomePage extends StatelessWidget {
                   budget: OverviewData('R\$ 3000,00', '70% da Receita'),
                 ),
               ),
+              ChartByCategory(),
             ],
           ),
         ),
