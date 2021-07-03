@@ -12,14 +12,17 @@ class MonthlyBottomNavigator extends StatelessWidget {
           children: <Widget>[
             Row(
               children: [
-                Icon(
-                  Icons.arrow_back,
-                  color: Colors.white,
+                IconButton(
+                  icon: Icon(
+                    Icons.arrow_back,
+                    color: Colors.white,
+                  ),
+                  onPressed: () {},
                 ),
                 Text(
                   'Jan/2021',
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 18,
                     color: Colors.white,
                   ),
                 ),
@@ -31,13 +34,16 @@ class MonthlyBottomNavigator extends StatelessWidget {
                 Text(
                   'Mar/2021',
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 18,
                     color: Colors.white,
                   ),
                 ),
-                Icon(
-                  Icons.arrow_forward,
-                  color: Colors.white,
+                IconButton(
+                  icon: Icon(
+                    Icons.arrow_forward,
+                    color: Colors.white,
+                  ),
+                  onPressed: () {},
                 ),
               ],
             ),
