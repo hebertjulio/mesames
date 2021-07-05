@@ -38,11 +38,11 @@ class Overview extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              _OverviewItem(
-                  'SAVE', this._saveData, Colors.green, Icons.savings, () {}),
-              SizedBox(width: 8),
               _OverviewItem('BUDGET', this._budgetData, Colors.orange,
                   Icons.calculate, () {}),
+              SizedBox(width: 8),
+              _OverviewItem(
+                  'SAVE', this._saveData, Colors.green, Icons.savings, () {}),
             ],
           ),
         ),
