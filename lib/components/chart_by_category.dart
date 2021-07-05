@@ -70,7 +70,7 @@ class _ChartByCategoryItem extends StatelessWidget {
                 ),
               ),
               LinearPercentIndicator(
-                padding: const EdgeInsets.only(left: 4.0, right: 4.0),
+                padding: const EdgeInsets.only(left: 8.0, right: 8.0),
                 percent: this._data.totalPercentage / 100,
                 lineHeight: 16,
                 progressColor: Colors.red,
@@ -86,7 +86,7 @@ class _ChartByCategoryItem extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(top: 8.0),
                 child: Text(
-                  'Budget: ${this._data.currency} ${this._data.budgetValue} (${this._data.budgetpercentage}% of Income)',
+                  'Budget ${this._data.budgetpercentage}% of Income (${this._data.currency} ${this._data.budgetValue})',
                   style: TextStyle(
                     fontSize: 14,
                   ),

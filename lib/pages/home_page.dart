@@ -31,19 +31,9 @@ class HomePage extends StatelessWidget {
                 ),
               ),
               ChartByCategory(<ChartByCategoryData>[
-                ChartByCategoryData('Moradia', 'R\$', 1400, 14, 5, 300),
-                ChartByCategoryData('Moradia', 'R\$', 1400, 14, 5, 300),
-                ChartByCategoryData('Moradia', 'R\$', 1400, 14, 5, 300),
-                ChartByCategoryData('Moradia', 'R\$', 1400, 14, 5, 300),
-                ChartByCategoryData('Moradia', 'R\$', 1400, 14, 5, 300),
-                ChartByCategoryData('Moradia', 'R\$', 1400, 14, 5, 300),
-                ChartByCategoryData('Moradia', 'R\$', 1400, 14, 5, 300),
-                ChartByCategoryData('Moradia', 'R\$', 1400, 14, 5, 300),
-                ChartByCategoryData('Moradia', 'R\$', 1400, 14, 5, 300),
-                ChartByCategoryData('Moradia', 'R\$', 1400, 14, 5, 300),
-                ChartByCategoryData('Moradia', 'R\$', 1400, 14, 5, 300),
-                ChartByCategoryData('Moradia', 'R\$', 1400, 14, 5, 300),
-                ChartByCategoryData('Moradia', 'R\$', 1400, 14, 5, 300),
+                ChartByCategoryData('Moradia', 'R\$', 1400, 65, 3000, 40),
+                ChartByCategoryData('Transporte', 'R\$', 500, 12, 540, 5),
+                ChartByCategoryData('Alimentação', 'R\$', 782, 35, 670, 10),
               ]),
             ],
           ),
@@ -54,11 +44,7 @@ class HomePage extends StatelessWidget {
         onPressed: () {},
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: BottomAppBar(
-        color: Colors.blue,
-        shape: CircularNotchedRectangle(),
-        child: MonthlyBottomNavigator(),
-      ),
+      bottomNavigationBar: MonthlyBottomNavigator(),
     );
   }
 }
