@@ -18,17 +18,14 @@ class HomePage extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: EdgeInsets.all(8.0),
           child: Column(
             children: [
-              Padding(
-                padding: const EdgeInsets.only(bottom: 16.0),
-                child: Overview(
-                  OverviewData('R\$', 2000, '+5%'),
-                  OverviewData('R\$', 1500, '+5%'),
-                  OverviewData('R\$', 500, '30% da Receita'),
-                  OverviewData('R\$', 3000, '70% da Receita'),
-                ),
+              Overview(
+                OverviewData('R\$', 2000, '+5%'),
+                OverviewData('R\$', 1500, '+5%'),
+                OverviewData('R\$', 500, '30% da Receita'),
+                OverviewData('R\$', 3000, '70% da Receita'),
               ),
               ChartByCategory(<ChartByCategoryData>[
                 ChartByCategoryData('Moradia', 'R\$', 1400, 65, 3000, 40),

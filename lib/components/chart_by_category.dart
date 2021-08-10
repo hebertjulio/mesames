@@ -8,26 +8,34 @@ class ChartByCategory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(bottom: 8.0),
-          child: Text(
-            'Expenses by Category',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 20,
+    return Padding(
+      padding: EdgeInsets.all(8.0),
+      child: Column(
+        children: [
+          Padding(
+            padding: EdgeInsets.only(bottom: 16.0),
+            child: Container(
+              color: Colors.white,
+              child: Center(
+                child: Text(
+                  'Expenses By Category',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 18,
+                  ),
+                ),
+              ),
             ),
           ),
-        ),
-        ListView(
-          physics: NeverScrollableScrollPhysics(),
-          scrollDirection: Axis.vertical,
-          shrinkWrap: true,
-          children:
-              this._data.map((data) => _ChartByCategoryItem(data)).toList(),
-        ),
-      ],
+          ListView(
+            physics: NeverScrollableScrollPhysics(),
+            scrollDirection: Axis.vertical,
+            shrinkWrap: true,
+            children:
+                this._data.map((data) => _ChartByCategoryItem(data)).toList(),
+          ),
+        ],
+      ),
     );
   }
 }

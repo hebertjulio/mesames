@@ -18,35 +18,53 @@ class Overview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(bottom: 4.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              _OverviewItem('INCOME', this._incomeData, Colors.blue,
-                  Icons.account_balance_wallet, () {}),
-              SizedBox(width: 8),
-              _OverviewItem('EXPENSE', this._expenseData, Colors.red,
-                  Icons.shopping_cart, () {}),
-            ],
+    return Padding(
+      padding: EdgeInsets.all(8.0),
+      child: Column(
+        children: [
+          Padding(
+            padding: EdgeInsets.only(bottom: 16.0),
+            child: Container(
+              color: Colors.white,
+              child: Center(
+                child: Text(
+                  'Overview',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 18,
+                  ),
+                ),
+              ),
+            ),
           ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(top: 4.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              _OverviewItem('BUDGET', this._budgetData, Colors.orange,
-                  Icons.calculate, () {}),
-              SizedBox(width: 8),
-              _OverviewItem(
-                  'SAVE', this._saveData, Colors.green, Icons.savings, () {}),
-            ],
+          Padding(
+            padding: const EdgeInsets.only(bottom: 4.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                _OverviewItem('INCOME', this._incomeData, Colors.blue,
+                    Icons.account_balance_wallet, () {}),
+                SizedBox(width: 8),
+                _OverviewItem('EXPENSE', this._expenseData, Colors.red,
+                    Icons.shopping_cart, () {}),
+              ],
+            ),
           ),
-        ),
-      ],
+          Padding(
+            padding: const EdgeInsets.only(top: 4.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                _OverviewItem('BUDGET', this._budgetData, Colors.orange,
+                    Icons.calculate, () {}),
+                SizedBox(width: 8),
+                _OverviewItem(
+                    'SAVE', this._saveData, Colors.green, Icons.savings, () {}),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
